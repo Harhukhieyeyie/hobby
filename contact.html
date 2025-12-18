@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Me – Classic Menswear</title>
+
+<style>
+/* GLOBAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f5f5f7;
+    color: #111;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+}
+
+.navbar a:hover {
+    background: rgba(0,82,204,0.08);
+    color: #0052cc;
+}
+
+.navbar a.active {
+    background: #0052cc;
+    color: #ffffff;
+}
+
+/* HERO */
+.hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url("https://i.ytimg.com/vi/rjfBNuF5twE/maxresdefault.jpg")
+        center / cover no-repeat;
+    transform: scale(1.05);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    max-width: 720px;
+    padding: 0 1rem;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.6rem;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    opacity: 0.95;
+}
+
+/* SCROLL BUTTON */
+.scroll-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background: #0052cc;
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn:hover {
+    background: #003c99;
+    transform: scale(1.05);
+    text-decoration: underline;
+}
+
+/* CONTACT SECTION */
+.section-box {
+    width: 90%;
+    max-width: 700px;
+    margin: 3.5rem auto;
+    padding: 2.6rem;
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.section-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-box h2 {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.section-box p {
+    margin-bottom: 2rem;
+    color: #444;
+}
+
+/* FORM */
+form {
+    text-align: left;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.4rem;
+    border-radius: 14px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #0052cc;
+}
+
+input[type="submit"] {
+    background: #0052cc;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background: #003c99;
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+footer {
+    background: #003c99;
+    color: #ffffff;
+    padding: 3rem 1rem;
+    margin-top: 4rem;
+}
+
+footer p {
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content p  { font-size: 1.1rem; }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="suit.html">Suit Collecting</a>
+    <a href="about.html">Reading</a>
+    <a href="blog.html">Blogging</a>
+    <a href="guides.html">Learning in Depth</a>
+    <a href="history.html">Music</a>
+    <a href="contact.html" class="active">Contact</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Contact Me</h1>
+        <p>Ideas, questions, conversations — feel free to reach out.</p>
+        <a href="#contact-form" class="scroll-btn">Scroll Down</a>
+    </div>
+</section>
+
+<section id="contact-form" class="section-box">
+    <h2>Get in Touch</h2>
+    <p>If you have a question, want to share a thought, or simply start a conversation, you’re very welcome to send a message. I read everything.</p>
+
+    <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Write whatever you'd like" required></textarea>
+
+        <input type="submit" value="Send">
+    </form>
+</section>
+
+<footer>
+    <p>Thanks for stopping by.</p>
+</footer>
+
+<script>
+// Fade-in on scroll
+const sections = document.querySelectorAll('.section-box');
+
+function revealSections() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if(sectionTop < triggerBottom) {
+            section.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', revealSections);
+</script>
+
+</body>
+</html>

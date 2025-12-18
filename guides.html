@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guides - Classic Menswear</title>
+<style>
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f5f7;
+  color: #111;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #0052cc;
+  border-bottom: 2px solid #0052cc;
+}
+
+/* HERO */
+#hero {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: url('https://plmr.co.uk/wp-content/uploads/2021/03/Kings-scaled.webp') top/cover no-repeat;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.hero-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-content h1 {
+  color: #ffffff;
+  font-size: 3.5rem;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+.hero-content p {
+  color: #ffffff;
+  font-size: 1.3rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  margin-top: 0.5rem;
+}
+
+.hero-note {
+  color: #f0f0f0;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.hero-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.8rem;
+  background: #0052cc;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: #003c99;
+}
+
+/* HOBBY SECTION */
+.hobby-section {
+  width: 90%;
+  max-width: 900px;
+  background: #ffffff;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.hobby-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hobby-section img {
+  width: 100%;
+  border-radius: 16px;
+  margin: 1rem 0;
+}
+
+.hobby-section table {
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+  border-collapse: collapse;
+}
+
+.hobby-section table th,
+.hobby-section table td {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+}
+
+.hobby-section table th {
+  background: #f5f5f5;
+}
+
+.hobby-section .tip {
+  font-style: italic;
+  color: #555;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* GUIDES SECTION */
+section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3rem 0 2rem 0;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: boxFadeUp 0.9s ease forwards;
+  align-items: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+}
+
+.card-number {
+  width: 40px;
+  height: 40px;
+  background: #0052cc;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  margin-top: 0.2rem;
+}
+
+.card-content h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-content p {
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.card-content .tip {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+.card-popup {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 5;
+}
+
+.card:hover .card-popup {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.card-popup::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+}
+
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+.card:nth-child(4) { animation-delay: 0.8s; }
+
+/* FOOTER */
+footer {
+  background: #003c99;
+  color: #ffffff;
+  padding: 3rem 1rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+/* ANIMATIONS */
+@keyframes boxFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-content h1 { font-size: 2.6rem; }
+  .hero-content p { font-size: 1.1rem; }
+  .hero-note { font-size: 0.9rem; }
+  .card { flex-direction: column; }
+  .card-number { margin-bottom: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+   <a href="index.html">Home</a>
+   <a href="suit.html">Suit Collecting</a>
+   <a href="about.html">Reading</a>
+   <a href="blog.html">Blogging</a>
+   <a href="guides.html" class="active">Learning in Depth</a>
+   <a href="history.html">Music</a>
+   <a href="contact.html">Contact</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-content" id="heroContent">
+    <h1>Learning in Depth 📖</h1>
+    <p>Breaking down complex subjects like law and geopolitics.</p>
+    <div class="hero-note">A personal framework for understanding difficult ideas properly.</div>
+    <a href="#hobby" class="hero-btn" id="scrollBtn">Begin Study</a>
+  </div>
+</section>
+
+<!-- New Hobby Section -->
+<section class="hobby-section" id="hobby">
+  <h2>My Personal Learning Approach 🧩</h2>
+  <p><strong>What the hobby is:</strong> Deep study of complex topics using structured steps, note-taking, and critical analysis to really understand concepts.</p>
+  <p><strong>My experience:</strong> I have been applying this method for several years across history, law, and geopolitics, continually refining my framework.</p>
+  <p><strong>Why I enjoy it:</strong> It allows me to see the bigger picture, connect ideas, and feel confident in my understanding of intricate subjects.</p>
+  <img src="https://www.visitlondon.com/-/media/images/london/visit/things-to-do/place/british-museum-640x360.jpg?rev=2fc59574f180425da3c48932820586e1" alt="Studying Materials">
+  
+  <p><strong>Equipment / Schedule / Achievements:</strong></p>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>Equipment</td>
+      <td>Laptop, notebooks, textbooks, research articles</td>
+    </tr>
+    <tr>
+      <td>Schedule</td>
+      <td>Daily 1–2 hours, weekly review sessions</td>
+    </tr>
+    <tr>
+      <td>Achievements</td>
+      <td>Completed in-depth guides on multiple subjects, maintained personal knowledge archive</td>
+    </tr>
+  </table>
+  
+  <div class="tip">Fun Fact: Reviewing old notes before starting a new topic often sparks new insights and connections.</div>
+</section>
+
+<section id="guides">
+  <h2>How I Study Complex Topics 🧠</h2>
+  <div class="cards-container">
+    <!-- Existing cards remain unchanged -->
+    <div class="card">
+      <div class="card-number">1</div>
+      <div class="card-content">
+        <h3>Step 1: Foundations 📚</h3>
+        <p>Before opinions come definitions. I begin by learning core terms, legal frameworks, historical context, and key institutions.</p>
+        <div class="tip">Tip: Start with textbooks or primary sources, not summaries.</div>
+        <div class="card-popup">Extra: Build a glossary as you go.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-number">2</div>
+      <div class="card-content">
+        <h3>Step 2: Context 🌍</h3>
+        <p>Law and geopolitics never exist in isolation. I study historical events, power structures, and incentives shaping decisions.</p>
+        <div class="tip">Tip: Ask who benefits and why a rule exists.</div>
+        <div class="card-popup">Extra: Compare multiple countries or systems.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-number">3</div>
+      <div class="card-content">
+        <h3>Step 3: Critical Reading 🧐</h3>
+        <p>I read opposing viewpoints, court decisions, treaties, and policy papers slowly and skeptically.</p>
+        <div class="tip">Tip: Separate facts, interpretation, and ideology.</div>
+        <div class="card-popup">Extra: Highlight assumptions made by the author.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-number">4</div>
+      <div class="card-content">
+        <h3>Step 4: Synthesis ✍️</h3>
+        <p>Understanding comes from connecting ideas. I write summaries, timelines, and arguments in my own words.</p>
+        <div class="tip">Tip: If you can explain it simply, you understand it.</div>
+        <div class="card-popup">Extra: Teach the topic to someone else.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Favorite Quote: "The first principle is that you must not fool yourself — and you are the easiest person to fool." — Richard Feynman</p>
+</footer>
+
+<script>
+document.getElementById('scrollBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  document.querySelector('#hobby').scrollIntoView({ behavior: 'smooth' });
+});
+
+window.addEventListener('load', function() {
+  document.getElementById('heroContent').classList.add('visible');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classic Menswear - Suit Collecting</title>
+<style>
+/* -----------------------------------------------------
+   GLOBAL RESET
+----------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f7;
+    color: #111;
+    line-height: 1.6;
+    text-align: center;
+    scroll-behavior: smooth;
+}
+
+/* -----------------------------------------------------
+   NAVBAR
+----------------------------------------------------- */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #0052cc;
+    border-bottom: 2px solid #0052cc;
+}
+
+/* -----------------------------------------------------
+   HERO
+----------------------------------------------------- */
+.hero {
+    height: 70vh;
+    background: url('https://dege-skinner.co.uk/wp-content/uploads/2021/02/Grey-Fox-Telegraph-November-2015-web-e1613479728173-2048x1245.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    padding: 0 1rem;
+    animation: heroFade 1.2s ease forwards;
+    color: #ffffff;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+}
+
+/* Scroll button */
+.scroll-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background: #0052cc;
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn:hover {
+    background: #003a99}
+
+/* -----------------------------------------------------
+   SECTION BOXES
+----------------------------------------------------- */
+.section-box {
+    width: 90%;
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 2.2rem;
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(40px);
+    animation: boxFadeUp 0.9s ease forwards;
+}
+
+.section-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+/* -----------------------------------------------------
+   CARDS
+----------------------------------------------------- */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background: #f5f5f5;
+    padding: 1.6rem;
+    flex: 1 1 250px;
+    max-width: 300px;
+    border-radius: 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 600;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+}
+
+/* -----------------------------------------------------
+   IMAGE GALLERY
+----------------------------------------------------- */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: galleryFadeUp 0.8s ease forwards;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 0.95rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+/* -----------------------------------------------------
+   TABLE
+----------------------------------------------------- */
+table {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #0052cc;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* -----------------------------------------------------
+   ANIMATIONS
+----------------------------------------------------- */
+@keyframes heroFade {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes boxFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes galleryFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -----------------------------------------------------
+   RESPONSIVE
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    .gallery-container {
+      grid-template-columns: 1fr 1fr;
+    }
+    .overlay {
+      font-size: 0.85rem;
+    }
+}
+
+/* -----------------------------------------------------
+   FOOTER
+----------------------------------------------------- */
+footer {
+    background: #003c99;
+    color: #ffffff;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: 4rem;
+    border-radius: 16px 16px 0 0;
+}
+
+footer p {
+    color: #ffffff;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="suit.html" class="active">Suit Collecting</a>
+  <a href="about.html">Reading</a>
+  <a href="blog.html">Blogging</a>
+  <a href="guides.html">Learning in Depth</a>
+  <a href="history.html">Music</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Classic Menswear Hobby</h1>
+        <p>Sharing my journey, discoveries, and passion for timeless style.</p>
+        <a href="#hobby" class="scroll-btn">Scroll Down</a>
+    </div>
+</section>
+
+<!-- WHAT THE HOBBY IS -->
+<section class="section-box" id="hobby">
+    <h2>What the Hobby Is</h2>
+    <p>Suit collecting is the careful pursuit of classic menswear pieces, focusing on timeless designs, quality fabrics, and historical significance.</p>
+</section>
+
+<!-- YOUR EXPERIENCE -->
+<section class="section-box">
+    <h2>Your Experience</h2>
+    <p>I have been collecting suits for over 5 years, starting with family heirlooms and gradually expanding into vintage and bespoke pieces from around the world.</p>
+</section>
+
+<!-- WHY YOU ENJOY IT -->
+<section class="section-box">
+    <h2>Why I Enjoy It</h2>
+    <p>This hobby connects me to history, craftsmanship, and personal style. Each suit tells a story, and curating my collection allows me to express myself while appreciating timeless fashion.</p>
+</section>
+
+<!-- ACHIEVEMENTS TABLE -->
+<section class="section-box">
+    <h2>Collection Highlights</h2>
+    <table>
+        <tr>
+            <th>Year Acquired</th>
+            <th>Suit Description</th>
+            <th>Source</th>
+        </tr>
+        <tr>
+            <td>2019</td>
+            <td>Classic Navy Double-Breasted</td>
+            <td>Vintage Store</td>
+        </tr>
+        <tr>
+            <td>2020</td>
+            <td>Light Grey Three-Piece</td>
+            <td>Family Heirloom</td>
+        </tr>
+        <tr>
+            <td>2021</td>
+            <td>Elegant Cream Blazer</td>
+            <td>Bespoke Tailor</td>
+        </tr>
+        <tr>
+            <td>2022</td>
+            <td>Prince Charles Inspired Navy Suit</td>
+            <td>Online Auction</td>
+        </tr>
+    </table>
+</section>
+
+<!-- FUN FACT / TIP -->
+<section class="section-box">
+    <h2>Fun Fact</h2>
+    <p>Did you know that the "number of buttons" on a suit jacket historically indicated social status? For example, double-breasted jackets were traditionally worn by diplomats and the elite.</p>
+</section>
+
+<!-- IMAGE GALLERY -->
+<section class="section-box" id="gallery">
+  <h2>Gallery of Inspirations 📸</h2>
+  <div class="gallery-container">
+    <div class="gallery-item">
+      <img src="https://i2-prod.scottishdailyexpress.co.uk/incoming/article35537368.ece/ALTERNATES/s615b/0_GettyImages-2223553585.jpg" alt="Suit 1">
+      <div class="overlay">Classic Windsor Uniform</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.hellomagazine.com/horizon/original_aspect_ratio/57178af78d1e-charles-full-z.jpg?tx=c_limit,w_640" alt="Blue Suit">
+      <div class="overlay">Refined Blue Navy Suit</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/63fddda0c77a0c7d8a0666f5/430bd9b8-81dc-488f-ac38-353a85b770bf/king-charles-grey-suit.jpg" alt="Gray Suit">
+      <div class="overlay">Light Gray Double-Breasted Suit</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.squarespace-cdn.com/content/v1/63fddda0c77a0c7d8a0666f5/5c8d35e5-ac9d-41c5-b977-c2b46f1bb279/prince-charles-navy-suit-royal-portrait.jpg" alt="Navy Suit">
+      <div class="overlay">Classic Navy Suit</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://media.tatler.com/photos/631f070ffc42ffe150cdc9bc/master/w_1024%2Cc_limit/CharlesFashion_120922_GettyImages-158101162.jpg" alt="Elegant Suit">
+      <div class="overlay">Elegant Cream Coloured Suit</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://cdn.shopify.com/s/files/1/0079/6118/2265/files/Prince-Charles-001_600x600.jpg?v=1678703367" alt="Prince Charles Suit">
+      <div class="overlay">Classic Young Prince Charles Navy Blazer</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>“Where style meets timeless elegance.”</p>
+</footer>
+
+<script>
+// Smooth scroll for "Scroll Down" button
+document.querySelector('.scroll-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector('#hobby');
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+
+</body>
+</html>

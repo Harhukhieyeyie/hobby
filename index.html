@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classic Menswear</title>
+<style>
+/* -----------------------------------------------------
+   GLOBAL RESET
+----------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f7;
+    color: #111;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* -----------------------------------------------------
+   NAVBAR
+----------------------------------------------------- */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #0052cc;
+    border-bottom: 2px solid #0052cc;
+}
+
+/* -----------------------------------------------------
+   HERO
+----------------------------------------------------- */
+.hero {
+    height: 70vh;
+    background: url('https://blog.adobe.com/en/publish/2021/12/06/media_1e13a3450604be5768801010419246258aec0cb0e.jpeg?width=750&format=jpeg&optimize=medium') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    padding: 0 1rem;
+    animation: heroFade 1.2s ease forwards;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.7);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+
+/* Hero Button */
+.hero-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background: #0052cc;
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+    background: #003a99;
+    transform: scale(1.05);
+}
+
+/* -----------------------------------------------------
+   SECTION BOXES
+----------------------------------------------------- */
+.section-box {
+    width: 90%;
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 2.2rem;
+    background: #fdfdfd url('https://www.transparenttextures.com/patterns/white-diamond.png') repeat;
+    border-radius: 22px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.section-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+.section-box h2 {
+    color: #0052cc;
+    margin-bottom: 1rem;
+}
+
+/* -----------------------------------------------------
+   PROFILE IMAGE
+----------------------------------------------------- */
+.profile-pic {
+    border-radius: 50%;
+    width: 120px;
+    margin-bottom: 1rem;
+    border: 3px solid #0052cc;
+}
+
+/* -----------------------------------------------------
+   CARDS
+----------------------------------------------------- */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background: #f5f5f7;
+    padding: 1.6rem;
+    flex: 1 1 250px;
+    max-width: 300px;
+    border-radius: 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    font-weight: 600;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+    background: #e6f0ff;
+}
+
+.card a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.card a:hover {
+    color: #0052cc;
+
+}
+
+/* -----------------------------------------------------
+   LISTS
+----------------------------------------------------- */
+.hobby-list {
+    list-style-type: disc;
+    margin-top: 1rem;
+    text-align: left;
+    padding-left: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hobby-list li {
+    margin-bottom: 0.6rem;
+}
+
+/* -----------------------------------------------------
+   ANIMATIONS
+----------------------------------------------------- */
+@keyframes heroFade {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* -----------------------------------------------------
+   RESPONSIVE
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* -----------------------------------------------------
+   FOOTER
+----------------------------------------------------- */
+footer {
+    background: #003c99;
+    color: #ffffff;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: 4rem;
+    border-radius: 16px 16px 0 0;
+}
+
+footer p {
+    color: #ffffff;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+
+/* Make cards fully clickable as buttons */
+.card-button {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.card-button .card {
+    cursor: pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html" class="active">Home</a>
+    <a href="suit.html">Suit Collecting</a> 
+    <a href="about.html">Reading</a>
+    <a href="blog.html">Blogging</a>
+    <a href="guides.html">Learning in Depth</a>
+    <a href="history.html">Music</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to My Classic Menswear Journey</h1>
+        <p>Hello! I'm Ratchanon Kitakami, a passionate enthusiast of timeless Manner and personal style. Explore my hobbies, inspirations, and guides as I dive into the world of classic fashion and culture.</p>
+        <a href="#hobbies" class="hero-button">Explore My Hobbies</a>
+    </div>
+</section>
+
+<!-- INTRODUCTION SECTION -->
+<section class="section-box">
+    <img src="/Users/haruki/Pictures/Photos Library.photoslibrary/resources/derivatives/8/8DBB72CB-541F-4C5B-80C4-AA34D1E79833_1_105_c.jpeg" alt="Profile Picture" class="profile-pic">
+    <h2>About Me</h2>
+    <p>I'm fascinated by the history and craftsmanship behind classic menswear. I enjoy exploring vintage collections, experimenting with tailoring, and sharing my insights with fellow enthusiasts. Style is not just about clothing—it’s about personality, history, and culture combined.</p>
+    <br>
+    <h3>My Hobbies</h3>
+    <ul class="hobby-list" id="hobbies">
+        <li>Collecting Vintage Suits</li>
+        <li>Reading Fashion and History Books</li>
+        <li>Blogging About Menswear</li>
+        <li>Creating Guides & Notes</li>
+        <li>Listening to Classical and Jazz Music</li>
+    </ul>
+</section>
+
+<!-- NAVIGATION TO HOBBY PAGES -->
+<!-- NAVIGATION TO HOBBY PAGES -->
+<section class="section-box">
+    <h2>Explore My Hobbies</h2>
+    <div class="cards-container">
+        <a href="suit.html" class="card-button">
+            <div class="card">Suit Collecting</div>
+        </a>
+        <a href="about.html" class="card-button">
+            <div class="card">Reading</div>
+        </a>
+        <a href="blog.html" class="card-button">
+            <div class="card">Blogging</div>
+        </a>
+        <a href="guides.html" class="card-button">
+            <div class="card">Learning in Depth</div>
+        </a>
+        <a href="history.html" class="card-button">
+            <div class="card">Music</div>
+        </a>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 Ratchanon Kitakami — Personal Hobbies Project</p>
+</footer>
+
+<script>
+// Scroll animation for sections
+const sections = document.querySelectorAll('.section-box');
+window.addEventListener('scroll', () => {
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100) {
+            section.classList.add('visible');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

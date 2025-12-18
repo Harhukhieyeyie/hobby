@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me – Classic Menswear</title>
+<style>
+/* GLOBAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f7;
+    color: #111;
+    line-height: 1.6;
+    text-align: center;
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #0052cc;
+    border-bottom: 2px solid #0052cc;
+}
+
+/* HERO */
+.hero {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("https://upload.wikimedia.org/wikipedia/commons/4/4b/Long_Room_Interior%2C_Trinity_College_Dublin%2C_Ireland_-_Diliff.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px);
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    max-width: 720px;
+    padding: 0 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.2s ease forwards;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+/* SCROLL BUTTON */
+.scroll-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background: #0052cc;
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn:hover {
+    background: #003a99;
+    transform: scale(1.05);
+    text-decoration: underline;
+}
+
+/* SECTION BOXES */
+.section-box {
+    width: 90%;
+    max-width: 950px;
+    margin: 3rem auto;
+    padding: 2.8rem;
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 0.9s ease forwards;
+}
+
+/* HEADINGS */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* CARDS */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background: #f5f5f5;
+    padding: 1.8rem;
+    flex: 1 1 260px;
+    max-width: 300px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cardFadeIn 0.9s ease forwards;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+}
+
+/* FULL CARD HOVER COLOR */
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+    background: #e6f0ff;
+}
+
+
+/* TIMELINE */
+.timeline {
+    text-align: left;
+    max-width: 620px;
+    margin: 2rem auto 0;
+    border-left: 3px solid #0052cc;
+    padding-left: 1.6rem;
+}
+
+.timeline span {
+    font-weight: 600;
+    color: #0052cc;
+}
+
+/* FOOTER */
+footer {
+    background: #003c99;
+    color: #ffffff;
+    padding: 3rem 1rem;
+    margin-top: 4rem;
+}
+
+footer p {
+    color: #ffffff;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content p { font-size: 1.1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="suit.html">Suit Collecting</a>
+    <a href="about.html" class="active">Reading</a>
+    <a href="blog.html">Blogging</a>
+    <a href="guides.html">Learning in Depth</a>
+    <a href="history.html">Music</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>About Me</h1>
+        <p>Exploring ideas, history, and meaning through reading.</p>
+        <a href="#hobby" class="scroll-btn">Scroll Down</a>
+    </div>
+</section>
+
+<section id="hobby" class="section-box">
+    <h2>What the Hobby Is</h2>
+    <p>Reading is a way to explore ideas, history, and the human experience. It allows for deep engagement and reflection.</p>
+</section>
+
+<section class="section-box">
+    <h2>My Experience</h2>
+    <p>I have been reading thoughtfully for over a decade, gradually exploring a range of genres from fiction to philosophy and primary historical sources.</p>
+</section>
+
+<section class="section-box">
+    <h2>Why I Enjoy It</h2>
+    <p>Reading provides personal insight, intellectual challenge, and the joy of discovering new perspectives and ideas.</p>
+</section>
+
+<section class="section-box">
+    <h2>Illustration</h2>
+    <img src="https://img-cdn.inc.com/image/upload/f_webp,c_fit,w_1920,q_auto/images/panoramic/getty_51875780_91281.jpg" 
+         alt="Reading Illustration" 
+         style="max-width:100%; border-radius:18px; box-shadow:0 8px 20px rgba(0,0,0,0.08); margin-top:1rem;">
+</section>
+
+<section class="section-box">
+    <h2>Equipment / Schedule / Achievements</h2>
+    <table style="width:100%; max-width:600px; margin:1rem auto; border-collapse: collapse;">
+        <tr style="background:#f5f5f5;">
+            <th style="padding:0.8rem; border:1px solid #ddd;">Item</th>
+            <th style="padding:0.8rem; border:1px solid #ddd;">Description</th>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Books</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Novels, Essays, Primary Sources</td>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Reading Time</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">1–2 hours daily</td>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Achievements</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Completed over 500 books and multiple reading projects</td>
+        </tr>
+    </table>
+</section>
+
+<section class="section-box">
+    <h2>Fun Fact / Tip</h2>
+    <p>Keeping a small notebook for notes and reflections while reading can dramatically increase comprehension and retention.</p>
+</section>
+
+<section class="section-box">
+    <h2>How I Read</h2>
+    <div class="cards-container">
+        <div class="card" style="animation-delay: 0.2s;">Slow & Intentional Reading</div>
+        <div class="card" style="animation-delay: 0.4s;">Note-Taking & Marginalia</div>
+        <div class="card" style="animation-delay: 0.6s;">Revisiting Difficult Passages</div>
+        <div class="card" style="animation-delay: 0.8s;">Cross-Referencing Ideas</div>
+        <div class="card" style="animation-delay: 1s;">Reflection & Writing</div>
+    </div>
+</section>
+
+<section class="section-box">
+    <h2>Values in Reading</h2>
+    <div class="cards-container">
+        <div class="card" style="animation-delay: 0.2s;">Depth</div>
+        <div class="card" style="animation-delay: 0.4s;">Patience</div>
+        <div class="card" style="animation-delay: 0.6s;">Curiosity</div>
+        <div class="card" style="animation-delay: 0.8s;">Context</div>
+    </div>
+</section>
+
+<section class="section-box">
+    <h2>Reading Journey</h2>
+    <div class="timeline">
+        <p><span>2014</span> — Fiction & novels</p>
+        <p><span>2017</span> — History & biographies</p>
+        <p><span>2019</span> — Philosophy & essays</p>
+        <p><span>2022</span> — Primary sources & classics</p>
+        <p><span>2025</span> — Reflective reading & blogging</p>
+    </div>
+</section>
+
+<section class="section-box">
+    <h2>Beyond Books</h2>
+    <p>Reading naturally led me into related interests such as history, design, and material culture. Books often serve as gateways — prompting questions about how societies function, how ideas evolve, and how meaning is preserved over time.</p>
+    <p style="margin-top: 1rem;">For me, reading is not about quantity, but engagement. It is a deliberate practice of slowing down, thinking carefully, and allowing ideas to mature rather than rushing to conclusions.</p>
+</section>
+
+<footer>
+    <p>“Turning pages, expanding minds.”</p>
+</footer>
+
+<script>
+// Smooth scroll for scroll button
+document.querySelectorAll('.scroll-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Classic Menswear</title>
+
+<style>
+/* GLOBAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f7;
+    color: #111;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #0052cc;
+    border-bottom: 2px solid #0052cc;
+}
+
+/* HERO */
+#hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    filter: blur(4px);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: heroFade 1s ease forwards;
+}
+
+#hero h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+#hero p {
+    color: #ffffff;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    margin-top: 0.5rem;
+}
+
+/* Scroll Button */
+.scroll-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background: #0052cc;
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn:hover {
+    background: #003a99;
+    transform: scale(1.05);
+}
+
+/* BLOG POSTS */
+.blog-post {
+    width: 90%;
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    opacity: 0;
+    animation: boxFadeUp 0.9s ease forwards;
+}
+
+.blog-post img {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+}
+
+.blog-post h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-post .date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.blog-post p {
+    margin-bottom: 1rem;
+}
+
+/* FOOTER */
+footer {
+    background: #003c99;
+    color: #ffffff;
+    padding: 3rem 1rem;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+/* ANIMATIONS */
+@keyframes heroFade {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes boxFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.blog-post:nth-child(2) { animation-delay: 0.3s; }
+.blog-post:nth-child(3) { animation-delay: 0.6s; }
+.blog-post:nth-child(4) { animation-delay: 0.9s; }
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="suit.html">Suit Collecting</a>
+    <a href="about.html">Reading</a>
+    <a href="blog.html" class="active">Blogging</a>
+    <a href="guides.html">Learning in Depth</a>
+    <a href="history.html">Music</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<section id="hero">
+    <img src="https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/14302/production/_89509628_istock_000067457221_medium.jpg" alt="Hero Image">
+    <div class="hero-content">
+        <h1>Personal Blogging Journal ✍️</h1>
+        <p>Thoughts, experiments, and reflections from my hobby of writing and blogging.</p>
+        <a href="#first-post" class="scroll-btn">Scroll Down</a>
+    </div>
+</section>
+
+    <div class="blog-post" id="first-post">
+    <img src="https://oxfordlearning.com/wp-content/uploads/2025/03/AdobeStock_97486436-scaled.jpeg" alt="Writing Desk">
+    <h2>Why I Started Blogging</h2>
+    <div class="date">April 12, 2025</div>
+    <p><strong>What the hobby is:</strong> Blogging is a personal space to explore ideas, reflect, and document my thoughts. It allows me to engage deeply with topics that interest me.</p>
+    <p><strong>My experience:</strong> I have been blogging consistently for several years, experimenting with formats and topics to refine my voice.</p>
+    <p><strong>Why I enjoy it:</strong> Blogging combines creativity with reflection. Sharing ideas in writing gives me clarity and a sense of accomplishment.</p>
+    <p>Blogging began as a quiet hobby—a place to organise my thoughts, explore personal interests, and practice writing without pressure. Over time, it evolved into longer, structured posts.</p>
+    <p><strong>Equipment / Schedule / Achievements:</strong></p>
+    <table style="width:100%; max-width:600px; margin:1rem auto; border-collapse: collapse;">
+        <tr style="background:#f5f5f5;">
+            <th style="padding:0.8rem; border:1px solid #ddd;">Item</th>
+            <th style="padding:0.8rem; border:1px solid #ddd;">Description</th>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Equipment</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Laptop, notebooks, reference books</td>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Schedule</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">1–2 hours daily, weekly reviews</td>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Achievements</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Published over 100 posts, completed multiple writing projects</td>
+        </tr>
+    </table>
+    <p><strong>Fun Fact / Tip:</strong> Keeping a dedicated notebook for ideas improves blogging consistency. Even short daily notes help maintain a steady flow of content.</p>
+</div>
+
+<div class="blog-post">
+    <img src="https://cdn.searchenginejournal.com/wp-content/uploads/2020/08/7-ways-a-blog-can-help-your-business-right-now-5f3c06b9eb24e-1280x720.png" alt="Editing Process">
+    <h2>My Blogging Process</h2>
+    <div class="date">March 28, 2025</div>
+    <p><strong>What the hobby is:</strong> The process of blogging is about collecting ideas, researching, and structuring content thoughtfully before sharing.</p>
+    <p><strong>My experience:</strong> I have developed a process of drafting, editing, and revising over the years, learning to organize ideas efficiently.</p>
+    <p><strong>Why I enjoy it:</strong> I enjoy seeing raw ideas transform into a polished post. Editing allows me to improve clarity and flow.</p>
+    <p>Most posts begin as rough ideas: notes, questions, or observations written throughout the week. I research, outline, and refine until the post feels coherent.</p>
+    <p><strong>Equipment / Schedule / Achievements:</strong></p>
+    <table style="width:100%; max-width:600px; margin:1rem auto; border-collapse: collapse;">
+        <tr style="background:#f5f5f5;">
+            <th style="padding:0.8rem; border:1px solid #ddd;">Item</th>
+            <th style="padding:0.8rem; border:1px solid #ddd;">Description</th>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Equipment</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Laptop, reference books, research tools</td>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Schedule</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Daily drafting, weekly editing sessions</td>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Achievements</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Streamlined blogging workflow, published consistently</td>
+        </tr>
+    </table>
+    <p><strong>Fun Fact / Tip:</strong> Writing first drafts quickly without worrying about mistakes often leads to better creative flow.</p>
+</div>
+
+<div class="blog-post">
+    <img src="https://www.scrippscollege.edu/departments/wp-content/uploads/sites/11/files/Writing-Program.jpg" alt="Consistency in Writing">
+    <h2>What Blogging Has Taught Me</h2>
+    <div class="date">February 10, 2025</div>
+    <p><strong>What the hobby is:</strong> Blogging is a reflective practice that helps me track growth and consolidate learning over time.</p>
+    <p><strong>My experience:</strong> Years of consistent posting have taught me patience, focus, and the value of gradual improvement.</p>
+    <p><strong>Why I enjoy it:</strong> It’s rewarding to look back on past posts and see how my thinking and writing skills have evolved.</p>
+    <p>Maintaining a blog has taught me discipline, patience, and the value of consistency. Not every post needs to be perfect—showing up regularly matters more.</p>
+    <p><strong>Equipment / Schedule / Achievements:</strong></p>
+    <table style="width:100%; max-width:600px; margin:1rem auto; border-collapse: collapse;">
+        <tr style="background:#f5f5f5;">
+            <th style="padding:0.8rem; border:1px solid #ddd;">Item</th>
+            <th style="padding:0.8rem; border:1px solid #ddd;">Description</th>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Equipment</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Laptop, research notes, reference materials</td>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Schedule</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">1–2 hours daily for reflections and updates</td>
+        </tr>
+        <tr>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Achievements</td>
+            <td style="padding:0.8rem; border:1px solid #ddd;">Maintained blog archive, developed consistent style, improved writing skills</td>
+        </tr>
+    </table>
+    <p><strong>Fun Fact / Tip:</strong> Revisiting old posts often sparks new ideas and perspectives for future content.</p>
+</div>
+
+<footer>
+    
+    <p>Favorite Quote: "I write to understand what I think." — Joan Didion</p>
+</footer>
+<script>
+document.querySelector('.scroll-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector('#first-post');
+    window.scrollTo({
+        top: target.offsetTop - 20, // adjust offset if needed
+        behavior: 'smooth'
+    });
+});
+</script>
+
+
+
+
+
+</body>
+</html>
